@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (_) => LoginCubit(getIt()))],
+      providers: [BlocProvider(create: (_) => getIt<LoginCubit>())],
       child: MaterialApp(
         title: 'Firebase Test',
         theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.blue),

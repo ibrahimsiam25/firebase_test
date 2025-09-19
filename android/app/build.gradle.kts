@@ -10,8 +10,8 @@ plugins {
 
 android {
     namespace = "com.example.firebase_test"
-    compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    compileSdk = 36
+    ndkVersion = "27.0.12077973"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -27,10 +27,15 @@ android {
         applicationId = "com.example.firebase_test"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
+        // Kotlin DSL uses property style (minSdk / targetSdk) instead of the Groovy minSdkVersion / targetSdkVersion functions
+        // Use Flutter-provided values if available via the flutter extension.
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+
+        // Enable MultiDex if your app (including transitive dependencies) exceeds the 64K methods limit.
+        multiDexEnabled = true
     }
 
     buildTypes {
@@ -44,4 +49,10 @@ android {
 
 flutter {
     source = "../.."
+}
+
+dependencies {
+  implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
+    // Use AndroidX MultiDex library (the old com.android.support artifact is obsolete and incompatible with modern compileSdk)
+    implementation("androidx.multidex:multidex:2.0.1")
 }

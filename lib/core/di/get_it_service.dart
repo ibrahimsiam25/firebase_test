@@ -15,12 +15,8 @@ void setupGetIt() {
   getIt.registerSingleton<FireStoreService>(FireStoreService());
 
   // Repos
-  getIt.registerSingleton<AuthRepo>(
-    AuthRepoImpl(firebaseAuthService: getIt.get<FirebaseAuthService>()),
-  );
-  getIt.registerSingleton<HomeRepo>(
-    HomeRepo(fireStoreService: getIt.get<FireStoreService>()),
-  );
+  getIt.registerSingleton<AuthRepo>(AuthRepoImpl(firebaseAuthService: getIt.get<FirebaseAuthService>()),);
+  getIt.registerSingleton<HomeRepo>(HomeRepo(fireStoreService: getIt.get<FireStoreService>()),);
 
   // Cubits
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt.get<AuthRepo>()));

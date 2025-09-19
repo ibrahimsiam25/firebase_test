@@ -6,6 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/di/get_it_service.dart';
 import 'features/auth/logic/login_cubit/login_cubit.dart';
 import 'features/auth/ui/screens/login/login_view.dart';
+import 'features/home/logic/home_cubit/home_cubit.dart';
+import 'features/home/ui/screens/home_view.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +27,13 @@ class MyApp extends StatelessWidget {
         title: 'Firebase Test',
         theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.blue),
         initialRoute: LoginView.routeName,
-        routes: {LoginView.routeName: (_) => const LoginView()},
+        routes: {
+          LoginView.routeName: (_) => const LoginView(),
+          HomeView.routeName: (_) => BlocProvider(
+            create: (_) => getIt<HomeCubit>(),
+            child: const HomeView(),
+          ),
+        },
       ),
     );
   }

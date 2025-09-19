@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../auth/logic/login_cubit/login_cubit.dart';
+import '../../../../home/ui/screens/home_view.dart';
 
 class LoginView extends StatelessWidget {
   static const routeName = '/login';
@@ -27,6 +28,8 @@ class LoginView extends StatelessWidget {
                   ),
                 ),
               );
+              // Navigate to Home
+              Navigator.of(context).pushReplacementNamed(HomeView.routeName);
             }
           },
           builder: (context, state) {

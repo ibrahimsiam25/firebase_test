@@ -43,7 +43,7 @@ class _HomeViewState extends State<HomeView> {
                 final item = state.data[index];
                 return ListTile(
                   title: Text(item['title']?.toString() ?? 'بدون عنوان'),
-                  subtitle: Text(item['id']?.toString() ?? ''),
+                 
                 );
               },
             );

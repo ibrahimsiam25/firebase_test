@@ -86,6 +86,7 @@ class FireStoreService {
       final querySnapshot = await firestore.collection(collectionName).get();
 
       final documents = querySnapshot.docs.map((doc) => doc.data()).toList();
+      print(documents);
       return documents;
     } on FirebaseException catch (e) {
       // Handle Firestore-specific errors
